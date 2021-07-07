@@ -1,0 +1,13 @@
+#root{
+    text-align:center;
+    margin-top : 200px;
+}
+#root div{ 
+    background-color: rgb(216, 216, 216);
+}
+
+#button{
+    padding: 10px 10px;
+    background: rgb(69, 51, 226);
+    color: #fff;
+}
