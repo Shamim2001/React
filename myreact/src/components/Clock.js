@@ -1,7 +1,10 @@
 import React from 'react';
+// eslint-disable-next-line import/no-unresolved
+import Button from './Button';
 
 class Clock extends React.Component {
-    state = { date: new Date() };
+    // eslint-disable-next-line react/no-unused-state
+    state = { date: new Date(), locale: 'bn-Bd' };
 
     componentDidMount() {
         this.clockTimer = setInterval(() => this.tick(), 1000);
@@ -11,6 +14,12 @@ class Clock extends React.Component {
         clearInterval(this.clockTimer);
     }
 
+    handleClick = () => {
+        this.setState({
+            locale: 'en-US',
+        });
+    };
+
     tick() {
         this.setState({
             date: new Date(),
@@ -18,7 +27,14 @@ class Clock extends React.Component {
     }
 
     render() {
-        return <h1 className="text">{this.state.date.toLocaleTimeString(this.props.locale)}</h1>;
+        console.log('Clock render');
+        const { date, locale } = this.state;
+        return (
+            <div>
+                <h1 className="text">{date.toLocaleTimeString(locale)}</h1>
+                <Button change={this.handleClick}>click here</Button>
+            </div>
+        );
     }
 }
 export default Clock;
