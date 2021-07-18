@@ -2,9 +2,9 @@ import React from 'react';
 
 class Button extends React.Component {
     shouldComponentUpdate(nextProps) {
-        const { change: currentChange } = this.props;
-        const { change: nextChange } = nextProps;
-        if (currentChange === nextChange) {
+        const { change: currentChange, locale: currentLocale } = this.props;
+        const { change: nextChange, locale: nextLocale } = nextProps;
+        if (currentChange === nextChange && nextLocale === currentLocale) {
             return false;
         }
         return true;
@@ -13,7 +13,7 @@ class Button extends React.Component {
     render() {
         const { change, locale } = this.props;
         return (
-            <button type="button" onChange={() => change(locale)}>
+            <button type="button" onClick={() => change(locale)}>
                 click hare
             </button>
         );
