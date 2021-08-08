@@ -1,12 +1,16 @@
-import Calclator from './components/Calclator';
+import Bracket from './components/composition/Bracket';
+import Emoji from './components/composition/Emoji';
+import Text from './components/composition/Text';
 
 function App() {
-    // const quantities = [1, 2, 3];
     return (
-        <div>
-            {/* <ClockList quantities={quantities} /> */}
-            <Calclator />
-        </div>
+        <Emoji>
+            {({ addEmoji }) => (
+                <Bracket>
+                    {({ addBracket }) => <Text addEmoji={addEmoji} addBracket={addBracket} />}
+                </Bracket>
+            )}
+        </Emoji>
     );
 }
 
